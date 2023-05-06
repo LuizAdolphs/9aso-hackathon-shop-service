@@ -5,7 +5,7 @@ name: DevOpsLab Pipeline
 on: 
   push:
     branches:
-      - pipeline-test
+      - main
 
 jobs:
   Build:
@@ -26,11 +26,11 @@ jobs:
           pip install -r requirements.txt
           pip install coverage
               
-      # - name: Unit Test
-      #   run: |
-      #     coverage run --source=app -m pytest test.py
-      #     coverage report -m
-      #     coverage xml -i
+      - name: Unit Test
+        run: |
+          coverage run --source=app -m pytest test.py
+          coverage report -m
+          coverage xml -i
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master  #https://github.com/marketplace/actions/sonarcloud-scan
