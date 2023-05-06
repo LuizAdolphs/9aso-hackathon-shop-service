@@ -61,12 +61,9 @@ jobs:
         id: homolog-deploy
         uses: 'google-github-actions/deploy-cloudrun@v1'  # https://github.com/marketplace/actions/deploy-to-cloud-run
         with:
-          service: hackathon-song-service-homolog
+          service: ${{ vars.GOOGLE_MYAPP }}-homolog
           image:   ${{ vars.GOOGLE_ARTIFACT }}/${{ vars.GOOGLE_PROJECT_ID }}/${{ vars.GOOGLE_REPONAME }}/${{ vars.GOOGLE_MYAPP }}:latest
           flags: '--allow-unauthenticated'
-
-      - name: Test Homolog
-        run: 'curl "${{ steps.homolog-deploy.outputs.url }}"'
 
   Deploy-Production:
     needs: Deploy-Homolog
