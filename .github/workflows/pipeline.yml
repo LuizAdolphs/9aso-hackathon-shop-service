@@ -3,9 +3,6 @@ name: DevOpsLab Pipeline
 
 # Evento que irá acionar a pipeline
 on:
-  pull_request:
-    branches:
-      - main
   push:
     branches:
       - main
